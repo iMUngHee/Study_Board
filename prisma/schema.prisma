@@ -17,6 +17,16 @@ model User {
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   TIL      TIL[]
+  Token    Token[]
+}
+
+model Token {
+  id       Int      @id @default(autoincrement())
+  paylaod  String   @unique
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   Int
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
 
 model TIL {
