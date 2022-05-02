@@ -13,27 +13,16 @@ model User {
   id       Int      @id @default(autoincrement())
   code     String   @unique
   name     String
-  avatar   String?
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   TIL      TIL[]
-  Token    Token[]
-}
-
-model Token {
-  id       Int      @id @default(autoincrement())
-  paylaod  String   @unique
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId   Int
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
 }
 
 model TIL {
-  id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      Int
-  createAt    DateTime @default(now())
-  updateAt    DateTime @updatedAt
-  description String   @db.MediumText
+  id       Int      @id @default(autoincrement())
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   Int
+  title    String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }

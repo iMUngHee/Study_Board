@@ -1,10 +1,15 @@
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const BottomBar: NextPage = () => {
+  const router = useRouter();
   return (
-    <div className="flex h-20 w-full cursor-pointer items-center justify-center bg-purple-700 text-white transition-colors lg:hidden">
-      <div className="flex h-full w-1/3 items-center justify-center hover:bg-purple-400">
+    <div className="fixed bottom-0 flex h-20 w-full cursor-pointer items-center justify-center bg-purple-700 py-4 text-white transition-colors lg:hidden">
+      <div
+        className="flex h-20 w-1/3 items-center justify-center hover:bg-purple-400"
+        onClick={() => router.push('/')}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-12 w-12"
@@ -20,7 +25,10 @@ const BottomBar: NextPage = () => {
           />
         </svg>
       </div>
-      <div className="flex h-full w-1/3 items-center justify-center hover:bg-purple-400">
+      <div
+        className="flex h-20 w-1/3 items-center justify-center hover:bg-purple-400"
+        onClick={() => router.push('/grass')}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-12 w-12"
@@ -36,7 +44,10 @@ const BottomBar: NextPage = () => {
           />
         </svg>
       </div>
-      <div className="flex h-full w-1/3 items-center justify-center hover:bg-purple-400">
+      <div
+        className="flex h-20 w-1/3 items-center justify-center hover:bg-purple-400"
+        onClick={() => router.push('/setting')}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-12 w-12"

@@ -1,15 +1,24 @@
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import React from 'react';
+import useUser from '../lib/client/useUser';
 
 const SideBar: NextPage = () => {
+  const router = useRouter();
+  const { user } = useUser();
   return (
-    <div className="hidden h-full w-80 items-center justify-between bg-purple-700 lg:flex lg:flex-col">
+    <div className="hidden h-screen w-80 items-center justify-between bg-purple-700 lg:flex lg:flex-col">
       <div className="mt-20 flex w-full flex-col items-center justify-center">
-        <div className="mb-20">
-          <div className="h-20 w-20 rounded-full bg-gray-500" />
+        <div className="mb-10">
+          <div className="mt-2 flex items-center justify-center">
+            <span className="text-3xl font-bold text-white">{user?.name}</span>
+          </div>
         </div>
         <div className="w-full text-lg font-bold text-white">
-          <div className="group flex h-20 w-full cursor-pointer items-center transition-all hover:bg-purple-400">
+          <div
+            className="group flex h-20 w-full cursor-pointer items-center transition-all hover:bg-purple-400"
+            onClick={() => router.push('/')}
+          >
             <div className="invisible h-16 w-4 rounded-tr-xl rounded-br-xl bg-purple-100 group-hover:visible" />
             <div className="pl-2">
               <svg
@@ -29,7 +38,10 @@ const SideBar: NextPage = () => {
             </div>
             <span className="pl-5">TIL</span>
           </div>
-          <div className="group flex h-20 w-full cursor-pointer items-center transition-colors hover:bg-purple-400">
+          <div
+            className="group flex h-20 w-full cursor-pointer items-center transition-colors hover:bg-purple-400"
+            onClick={() => router.push('/grass')}
+          >
             <div className="invisible h-16 w-4 rounded-tr-xl rounded-br-xl bg-purple-100 group-hover:visible" />
             <div className="pl-2">
               <svg
@@ -52,7 +64,10 @@ const SideBar: NextPage = () => {
         </div>
       </div>
       <div>
-        <div className="mb-20 cursor-pointer transition-all hover:rotate-180">
+        <div
+          className="mb-20 cursor-pointer transition-all hover:rotate-180"
+          onClick={() => router.push('/setting')}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-14 w-14 text-cyan-50"
